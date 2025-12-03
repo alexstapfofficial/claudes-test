@@ -3,12 +3,5 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nuxtjs",
-  "outputDirectory": ".output/public",
-  "regions": ["fra1"],
-  "functions": {
-    "api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  "regions": ["fra1"]
 }
