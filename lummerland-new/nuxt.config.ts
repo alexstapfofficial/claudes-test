@@ -2,6 +2,9 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+  // SSR aktiviert (Standard in Nuxt 3)
+  ssr: true,
+
   // @ts-ignore
   modules: [
     '@nuxt/content',
@@ -11,14 +14,22 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     'nuxt-studio'
   ],
+
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel',
+    // Prerender bestimmte Routen für bessere Performance
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+      failOnError: false
+    }
   },
 
   css: ['./app/assets/css/tailwind.css'],
 
   content: {
-    // Use default file-based content for static site
+    // File-based content für SSR
+    documentDriven: false
   },
 
   fonts: {
