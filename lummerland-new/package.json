@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@libsql/client": "^0.14.0",
     "@nuxt/content": "^3.8.2",
     "@nuxt/fonts": "^0.12.1",
     "@nuxt/icon": "^2.1.0",

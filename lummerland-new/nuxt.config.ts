@@ -12,21 +12,13 @@ export default defineNuxtConfig({
     'nuxt-studio'
   ],
   nitro: {
-    preset: 'vercel',
-    rollupConfig: {
-      external: []
-    },
-    alias: {
-      'better-sqlite3': '@libsql/client'
-    }
+    preset: 'vercel'
   },
 
   css: ['./app/assets/css/tailwind.css'],
 
   content: {
-    database: {
-      type: 'libsql'
-    }
+    // Use default file-based content for static site
   },
 
   fonts: {
