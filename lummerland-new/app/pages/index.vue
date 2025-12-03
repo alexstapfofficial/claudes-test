@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <AppHeader/>
+    <Hero/>
+    <Development/>
+    <Advantages/>
+    <Gallery/>
+    <Schedule/>
+    <Holidays/>
+    <Pricing/>
+    <Team/>
+    <Cta/>
+    <Contact/>
+    <Footer/>
+  </div>
+</template>

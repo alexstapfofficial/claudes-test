@@ -1,274 +1,592 @@
-# CLAUDE.md - AI Assistant Guide
+# CLAUDE.md - Figma zu Nuxt Onepage Konvertierung
 
-## About This Document
+## Projekt-Übersicht
 
-This document serves as a comprehensive guide for AI assistants (like Claude) working with this codebase. It provides context, conventions, and workflows to ensure consistent and effective collaboration.
+Dieses Projekt setzt ein Figma-Design in eine responsive Nuxt 3 Onepage-Website um.
 
-**Last Updated:** 2025-11-28
-**Repository:** alexstapfofficial/claudes-test
+## Technologie-Stack
 
+- **Nuxt 3** - Vue Framework
+- **Nuxt Content** - Markdown-basiertes CMS für Texte
+- **Nuxt UI** - UI-Komponenten-Bibliothek
+- **TailwindCSS** - Responsive Styling
+- **Nuxt Icon** - Icon-System
+- **Figma MCP Server** - Design-Datenquelle
+
+## Entwicklungs-Workflow
+
+### 1. Figma-Design Analyse
+
+Wenn du das Figma-Design erhältst:
+
+1. **Analysiere die Design-Struktur** und identifiziere logische Sektionen (z.B. Hero, Features, About, Services, Team, Testimonials, Contact, Footer)
+2. **Benenne jede Sektion semantisch** nach ihrem Zweck
+3. **Identifiziere Designelemente**, die mit Nuxt UI Komponenten umgesetzt werden können
+4. **Extrahiere alle Texte** und plane deren Speicherung in Markdown-Dateien
+
+### 2. Projektstruktur
+
+```
+/components
+  /sections
+    - Hero.vue
+    - Features.vue
+    - About.vue
+    - Services.vue
+    - Team.vue
+    - Testimonials.vue
+    - Contact.vue
+    - Footer.vue
+  /ui
+    - Navigation.vue
+    - (weitere wiederverwendbare Komponenten)
+
+/content
+  /sections
+    - hero.md
+    - features.md
+    - about.md
+    - services.md
+    - team.md
+    - testimonials.md
+    - contact.md
+    - footer.md
+
+/pages
+  - index.vue
+
+/assets
+  /css
+    - main.css
+```
+
+### 3. Sektionen-Benennung
+
+Benenne Komponenten nach ihrer **semantischen Funktion**, nicht nach visuellen Eigenschaften:
+
+✅ **RICHTIG:**
+- `Hero.vue` - Hauptbereich mit Hauptbotschaft
+- `Features.vue` - Feature-/Vorteilsübersicht
+- `About.vue` - Über uns / Firmenvorstellung
+- `Services.vue` - Dienstleistungen/Produkte
+- `Team.vue` - Team-Mitglieder
+- `Testimonials.vue` - Kundenstimmen/Bewertungen
+- `Gallery.vue` - Bildergalerie
+- `Pricing.vue` - Preistabellen
+- `FAQ.vue` - Häufig gestellte Fragen
+- `CTA.vue` - Call-to-Action Bereich
+- `Contact.vue` - Kontaktformular/-information
+- `Footer.vue` - Fußzeile
+
+❌ **FALSCH:**
+- `BlueSection.vue`
+- `Section1.vue`
+- `BigText.vue`
+
+### 4. Content-Struktur (Markdown-Dateien)
+
+Speichere alle Texte in strukturierten Markdown-Dateien:
+
+**Beispiel: `/content/sections/hero.md`**
+```markdown
+---
+title: "Deine Zukunft beginnt hier"
+subtitle: "Innovative Lösungen für moderne Herausforderungen"
+cta_primary: "Jetzt starten"
+cta_secondary: "Mehr erfahren"
 ---
 
-## Repository Overview
+# Willkommen bei [Firmenname]
 
-### Purpose
-This repository serves as a test/sandbox environment for development workflows and AI-assisted coding practices.
+Wir helfen dir dabei, deine Vision Wirklichkeit werden zu lassen.
+```
 
-### Current State
-- **Status:** Newly initialized repository
-- **Primary Branch:** Not yet established (awaiting first commit)
-- **Active Development Branch:** `claude/claude-md-miiqv4ucpe40m2rl-01MjUntd63oH3BT4VqE58cSU`
-
+**Beispiel: `/content/sections/features.md`**
+```markdown
 ---
-
-## Codebase Structure
-
-### Directory Layout
-```
-claudes-test/
-├── .git/                 # Git repository metadata
-└── CLAUDE.md            # This file
-```
-
-**Note:** As this is a new repository, the structure will evolve. Update this section as new directories and modules are added.
-
-### Key Components
-_To be populated as the project develops._
-
+title: "Unsere Features"
+subtitle: "Alles was du brauchst, an einem Ort"
+features:
+  - title: "Schnell"
+    description: "Blitzschnelle Performance"
+    icon: "heroicons:bolt"
+  - title: "Sicher"
+    description: "Enterprise-grade Sicherheit"
+    icon: "heroicons:shield-check"
+  - title: "Skalierbar"
+    description: "Wächst mit deinen Anforderungen"
+    icon: "heroicons:arrow-trending-up"
 ---
-
-## Development Workflows
-
-### Branch Strategy
-
-#### Branch Naming Conventions
-- Feature branches: `feature/<descriptive-name>`
-- Bug fixes: `bugfix/<issue-description>`
-- Claude AI branches: `claude/claude-md-<session-id>`
-
-#### Workflow Process
-1. **Create Branch:** Always work on feature branches, never directly on main
-2. **Develop:** Make incremental commits with clear messages
-3. **Test:** Ensure all tests pass before pushing
-4. **Push:** Use `git push -u origin <branch-name>`
-5. **PR:** Create pull request for review before merging to main
-
-### Git Commit Conventions
-
-#### Commit Message Format
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
 ```
 
-#### Types
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style changes (formatting, no logic change)
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
-- `chore`: Maintenance tasks
+### 5. Nuxt UI Komponenten verwenden
 
-#### Examples
+Nutze vorrangig diese Nuxt UI Komponenten:
+
+**Layout & Container:**
+- `<UContainer>` - Responsive Container mit max-width
+- `<UCard>` - Karten-Layout
+- `<UDivider>` - Trennlinien
+
+**Navigation:**
+- `<UVerticalNavigation>` - Vertikale Navigation (Sidebar)
+- `<UHorizontalNavigation>` - Horizontale Navigation
+- `<UCommandPalette>` - Command Palette
+
+**Buttons & Links:**
+- `<UButton>` - Buttons in allen Varianten
+- `<UButtonGroup>` - Button-Gruppen
+
+**Formulare:**
+- `<UForm>` - Formular-Wrapper mit Validierung
+- `<UFormGroup>` - Formular-Gruppen
+- `<UInput>` - Text-Inputs
+- `<UTextarea>` - Textareas
+- `<USelect>` - Dropdowns
+- `<UCheckbox>` - Checkboxen
+- `<URadio>` - Radio-Buttons
+
+**Feedback:**
+- `<UAlert>` - Hinweise und Warnungen
+- `<UBadge>` - Labels und Tags
+- `<UNotification>` - Toast-Benachrichtigungen
+
+**Bilder:**
+- `<UAvatar>` - Profilbilder (für Team-Mitglieder)
+- `<UAvatarGroup>` - Gruppen von Avataren
+
+**Andere:**
+- `<UIcon>` - Icons (über 200.000 verfügbar)
+- `<UAccordion>` - Akkordeons (perfekt für FAQs)
+- `<UModal>` - Modale Dialoge
+- `<UTabs>` - Tab-Navigation
+
+### 6. Bilder-Handling
+
+**Für Bilder die NICHT aus Figma geladen werden können:**
+
+```vue
+<template>
+  <!-- Nuxt UI Placeholder verwenden -->
+  <div class="aspect-video w-full bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <UIcon name="heroicons:photo" class="w-16 h-16 text-gray-400" />
+  </div>
+</template>
 ```
-feat(auth): add JWT authentication middleware
 
-Implements token-based authentication using JWT.
-Includes middleware for protected routes and token refresh logic.
+**Alternative Placeholders:**
 
-Closes #123
+```vue
+<!-- Für Profilbilder / Avatare -->
+<UAvatar 
+  size="xl" 
+  icon="heroicons:user"
+  alt="Team Member"
+/>
+
+<!-- Für generische Bilder -->
+<div class="relative aspect-[16/9] bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg overflow-hidden">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <UIcon name="heroicons:photo" class="w-20 h-20 text-white/50" />
+  </div>
+</div>
 ```
 
+### 7. Navigation implementieren
+
+Erstelle eine Smooth-Scroll Navigation in `components/ui/Navigation.vue`:
+
+```vue
+<template>
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+    <UContainer>
+      <nav class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <UIcon name="heroicons:sparkles" class="w-6 h-6 text-primary" />
+          <span class="font-bold text-xl">Logo</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex items-center gap-8">
+          <li v-for="item in navigation" :key="item.id">
+            <a 
+              :href="`#${item.id}`"
+              class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
+              @click.prevent="scrollToSection(item.id)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <UButton
+          icon="heroicons:bars-3"
+          variant="ghost"
+          class="md:hidden"
+          @click="isMenuOpen = true"
+        />
+      </nav>
+    </UContainer>
+
+    <!-- Mobile Slide-over Menu -->
+    <USlideover v-model="isMenuOpen">
+      <UCard class="h-full flex flex-col">
+        <template #header>
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-xl">Menü</span>
+            <UButton
+              icon="heroicons:x-mark"
+              variant="ghost"
+              @click="isMenuOpen = false"
+            />
+          </div>
+        </template>
+
+        <ul class="space-y-4">
+          <li v-for="item in navigation" :key="item.id">
+            <a
+              :href="`#${item.id}`"
+              class="block text-lg hover:text-primary transition-colors"
+              @click="scrollToSection(item.id); isMenuOpen = false"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </UCard>
+    </USlideover>
+  </header>
+</template>
+
+<script setup lang="ts">
+const isMenuOpen = ref(false)
+
+const navigation = [
+  { id: 'hero', label: 'Home' },
+  { id: 'features', label: 'Features' },
+  { id: 'about', label: 'Über uns' },
+  { id: 'services', label: 'Services' },
+  { id: 'contact', label: 'Kontakt' }
+]
+
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+</script>
 ```
-fix(api): handle null response in user endpoint
 
-Adds null check before accessing user data to prevent
-runtime errors when user is not found.
+### 8. Haupt-Page Struktur
+
+**`pages/index.vue`:**
+
+```vue
+<template>
+  <div>
+    <Navigation />
+    
+    <main>
+      <section id="hero" class="min-h-screen">
+        <Hero />
+      </section>
+
+      <section id="features" class="py-20">
+        <Features />
+      </section>
+
+      <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <About />
+      </section>
+
+      <section id="services" class="py-20">
+        <Services />
+      </section>
+
+      <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <Contact />
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</template>
+
+<script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Firmenname - Deine Lösung',
+  description: 'Beschreibung der Website',
+  ogImage: '/og-image.jpg'
+})
+</script>
 ```
 
-### Testing Strategy
-_To be defined as project grows._
+### 9. Responsive Design Richtlinien
 
----
+**Nutze TailwindCSS Breakpoints konsequent:**
 
-## Code Conventions
+```vue
+<template>
+  <!-- Mobile First Approach -->
+  <div class="
+    grid 
+    grid-cols-1       /* Mobile: 1 Spalte */
+    md:grid-cols-2    /* Tablet: 2 Spalten */
+    lg:grid-cols-3    /* Desktop: 3 Spalten */
+    xl:grid-cols-4    /* Large Desktop: 4 Spalten */
+    gap-6
+  ">
+    <!-- Content -->
+  </div>
 
-### General Principles
-1. **Simplicity First:** Write clear, maintainable code over clever solutions
-2. **No Over-Engineering:** Only add what's needed for current requirements
-3. **Security Awareness:** Always consider OWASP Top 10 vulnerabilities
-4. **Clean Commits:** Each commit should be atomic and purposeful
+  <!-- Responsive Typography -->
+  <h1 class="
+    text-3xl          /* Mobile */
+    md:text-4xl       /* Tablet */
+    lg:text-5xl       /* Desktop */
+    xl:text-6xl       /* Large */
+    font-bold
+  ">
+    Titel
+  </h1>
 
-### Style Guidelines
-_Language-specific guidelines to be added as codebase develops._
+  <!-- Responsive Spacing -->
+  <section class="
+    px-4              /* Mobile Padding */
+    md:px-8           /* Tablet */
+    lg:px-16          /* Desktop */
+    py-12
+    md:py-16
+    lg:py-24
+  ">
+    <UContainer>
+      <!-- Content -->
+    </UContainer>
+  </section>
+</template>
+```
 
-### File Organization
-- Keep related functionality together
-- Avoid deep nesting (max 3-4 levels)
-- Use clear, descriptive file and directory names
+### 10. Beispiel-Komponente
 
----
+**`components/sections/Hero.vue`:**
 
-## AI Assistant Guidelines
+```vue
+<template>
+  <div class="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-gray-900 dark:to-gray-800">
+    <UContainer>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="space-y-6">
+          <UBadge color="primary" variant="subtle" size="lg">
+            {{ content?.badge }}
+          </UBadge>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+            {{ content?.title }}
+          </h1>
+          
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            {{ content?.subtitle }}
+          </p>
 
-### Before Making Changes
-1. **Read First:** Always read existing code before modifying
-2. **Understand Context:** Use Grep/Glob to understand related code
-3. **Check Dependencies:** Look for files that import or depend on code you're changing
+          <ContentRenderer v-if="content" :value="content" class="prose dark:prose-invert" />
 
-### During Development
-1. **Use TodoWrite:** Track multi-step tasks with the TodoWrite tool
-2. **Parallel Operations:** Run independent operations in parallel
-3. **Incremental Commits:** Commit logical units of work
-4. **Test As You Go:** Verify changes work before moving to next task
+          <div class="flex flex-col sm:flex-row gap-4">
+            <UButton 
+              size="xl" 
+              icon="heroicons:rocket-launch"
+              :to="`#${content?.cta_primary_link}`"
+            >
+              {{ content?.cta_primary }}
+            </UButton>
+            
+            <UButton 
+              size="xl" 
+              variant="outline"
+              icon="heroicons:arrow-right"
+              :to="`#${content?.cta_secondary_link}`"
+            >
+              {{ content?.cta_secondary }}
+            </UButton>
+          </div>
+        </div>
 
-### Code Modification Rules
-1. **Prefer Edit over Write:** Edit existing files rather than rewriting
-2. **Minimal Changes:** Only modify what's necessary for the task
-3. **No Unnecessary Improvements:** Don't refactor unrelated code
-4. **Security First:** Watch for injection vulnerabilities, XSS, etc.
+        <!-- Hero Image / Placeholder -->
+        <div class="relative aspect-square lg:aspect-video">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <UIcon name="heroicons:photo" class="w-32 h-32 text-white/30" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </UContainer>
+  </div>
+</template>
 
-### What NOT to Do
-- ❌ Don't add features not explicitly requested
-- ❌ Don't refactor code not related to the current task
-- ❌ Don't add comments/docstrings to unchanged code
-- ❌ Don't add hypothetical error handling
-- ❌ Don't create abstractions for one-time operations
-- ❌ Don't add backwards-compatibility hacks
+<script setup lang="ts">
+const { data: content } = await useAsyncData('hero', () => 
+  queryContent('/sections/hero').findOne()
+)
+</script>
+```
 
-### Communication
-- Be concise and technical
-- Avoid emojis unless requested
-- Reference code with `file:line` format
-- Output information directly, not via bash echo
+### 11. Content Query Patterns
 
----
+**Einzelnes Dokument laden:**
+```typescript
+const { data: content } = await useAsyncData('hero', () => 
+  queryContent('/sections/hero').findOne()
+)
+```
 
-## Key Technologies
+**Liste von Dokumenten:**
+```typescript
+const { data: features } = await useAsyncData('features', () => 
+  queryContent('/sections/features').find()
+)
+```
 
-_To be populated as dependencies are added._
+**Mit Sortierung:**
+```typescript
+const { data: team } = await useAsyncData('team', () => 
+  queryContent('/team')
+    .sort({ order: 1 })
+    .find()
+)
+```
 
-### Languages
-- _Not yet determined_
+### 12. Dark Mode Support
 
-### Frameworks & Libraries
-- _Not yet determined_
+Alle Komponenten müssen Dark Mode unterstützen:
 
-### Tools & Services
-- **Version Control:** Git
-- **AI Assistant:** Claude Code
+```vue
+<template>
+  <!-- Immer beide Varianten definieren -->
+  <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <UButton color="primary">
+      <!-- Nuxt UI Komponenten unterstützen Dark Mode automatisch -->
+      Click me
+    </UButton>
+  </div>
+</template>
+```
 
----
+### 13. Accessibility Checklist
 
-## Environment Setup
+- [ ] Alle Bilder haben `alt` Attribute
+- [ ] Navigation ist keyboard-navigierbar
+- [ ] Farbkontraste erfüllen WCAG Standards
+- [ ] Fokus-States sind sichtbar
+- [ ] Semantische HTML-Elemente (`<header>`, `<main>`, `<section>`, `<footer>`)
+- [ ] ARIA-Labels wo nötig
 
-### Prerequisites
-_To be defined._
+### 14. Performance Optimierung
 
-### Installation
+```vue
+<script setup lang="ts">
+// Lazy Loading für Komponenten
+const Hero = defineAsyncComponent(() => import('~/components/sections/Hero.vue'))
+const Features = defineAsyncComponent(() => import('~/components/sections/Features.vue'))
+
+// Bilder optimieren
+const img = useImage()
+const optimizedImage = computed(() => 
+  img('/path/to/image.jpg', { width: 800, quality: 80 })
+)
+</script>
+```
+
+### 15. Testing vor Deployment
+
+**Checklist:**
+- [ ] Alle Sektionen sind responsive (Mobile, Tablet, Desktop)
+- [ ] Navigation funktioniert (Smooth Scroll zu allen Sektionen)
+- [ ] Dark Mode funktioniert überall
+- [ ] Alle Texte kommen aus Markdown-Dateien
+- [ ] Nuxt UI Komponenten werden verwendet
+- [ ] Placeholder sind für fehlende Bilder gesetzt
+- [ ] Meta-Tags für SEO sind gesetzt
+- [ ] Performance ist optimiert (Lighthouse Score)
+
+## Quick Reference: Nuxt UI Komponenten
+
+```vue
+<!-- Buttons -->
+<UButton>Standard</UButton>
+<UButton variant="outline">Outline</UButton>
+<UButton variant="ghost">Ghost</UButton>
+<UButton size="xl" icon="heroicons:star">Mit Icon</UButton>
+
+<!-- Cards -->
+<UCard>
+  <template #header>Header</template>
+  Content
+  <template #footer>Footer</template>
+</UCard>
+
+<!-- Forms -->
+<UForm :state="state">
+  <UFormGroup label="Name" name="name">
+    <UInput v-model="state.name" />
+  </UFormGroup>
+</UForm>
+
+<!-- Alerts -->
+<UAlert 
+  title="Erfolg!" 
+  description="Deine Nachricht wurde gesendet"
+  color="green"
+  icon="heroicons:check-circle"
+/>
+
+<!-- Icons (Heroicons empfohlen) -->
+<UIcon name="heroicons:heart" class="w-6 h-6" />
+<UIcon name="heroicons:envelope" class="w-6 h-6" />
+<UIcon name="heroicons:phone" class="w-6 h-6" />
+
+<!-- Avatars -->
+<UAvatar src="/team/john.jpg" alt="John Doe" size="xl" />
+<UAvatar icon="heroicons:user" size="xl" />
+
+<!-- Container -->
+<UContainer>
+  <div class="max-w-7xl mx-auto">
+    <!-- Content -->
+  </div>
+</UContainer>
+```
+
+## Entwicklungs-Kommandos
+
 ```bash
-# Clone repository
-git clone <repository-url>
-cd claudes-test
+# Development Server
+npm run dev
 
-# Additional setup steps to be added
+# Production Build
+npm run build
+npm run preview
+
+# Content bearbeiten
+# → Markdown Dateien in /content/sections/
+
+# Komponenten hinzufügen
+# → Vue Dateien in /components/sections/
 ```
 
-### Configuration
-_To be documented as configuration needs arise._
+## Deployment (Vercel)
+
+Das Projekt ist für Vercel optimiert. Nach dem Push zu GitHub:
+
+1. In Vercel importieren
+2. Build Command: `npm run generate`
+3. Output Directory: `.output/public`
+4. Deploy!
 
 ---
 
-## Testing
-
-### Running Tests
-_To be documented._
-
-### Test Coverage
-_Target coverage goals to be defined._
-
-### CI/CD
-_Pipeline configuration to be added._
-
----
-
-## Common Tasks
-
-### Adding a New Feature
-1. Create feature branch from main
-2. Implement feature with tests
-3. Update documentation
-4. Create PR with clear description
-5. Address review feedback
-6. Merge after approval
-
-### Fixing a Bug
-1. Create bugfix branch
-2. Write failing test that reproduces bug
-3. Fix the bug
-4. Verify test passes
-5. Create PR with bug description and fix explanation
-
-### Updating Dependencies
-_Process to be defined._
-
----
-
-## Troubleshooting
-
-### Common Issues
-_To be populated as issues are encountered._
-
-### Debug Strategies
-1. Check logs first
-2. Verify environment configuration
-3. Test with minimal reproduction
-4. Review recent changes
-
----
-
-## Resources
-
-### Documentation
-- Repository README: _To be created_
-- API Documentation: _To be created_
-- Architecture Diagrams: _To be created_
-
-### External References
-- [Git Documentation](https://git-scm.com/doc)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-
----
-
-## Maintenance
-
-### Updating This Document
-- Update after major architectural changes
-- Add new sections as project grows
-- Keep examples current with actual code
-- Review quarterly for accuracy
-
-### Review Schedule
-- **Weekly:** Check for outdated information
-- **Monthly:** Update statistics and metrics
-- **Quarterly:** Comprehensive review and reorganization
-
----
-
-## Contact & Support
-
-_Project maintainers and contact information to be added._
-
----
-
-## Changelog
-
-### 2025-11-28
-- Initial CLAUDE.md creation
-- Established repository structure documentation
-- Defined AI assistant guidelines
-- Set up development workflow templates
+**Bei Fragen oder Unklarheiten während der Entwicklung, frage nach spezifischen Details zum Figma-Design!**

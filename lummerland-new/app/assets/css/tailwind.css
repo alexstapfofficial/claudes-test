@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  /* Import font families from tailwind.config.ts */
+  --font-family-sorts-mill: "Sorts Mill Goudy", serif;
+  --font-family-raleway: Raleway, sans-serif;
+
+  /* Import custom colors from tailwind.config.ts */
+  --color-primary: #c09550;
+  --color-cream-can: #f0bb65;
+  --color-cream-can-dark: #c09550;
+  --color-cream-can-darker: #604a28;
+  --color-cream: #fcf1e0;
+  --color-cream-light: #fdf8ef;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-raleway);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-sorts-mill);
+  }
+}
