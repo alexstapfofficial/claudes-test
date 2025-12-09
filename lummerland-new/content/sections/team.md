@@ -1,4 +1,6 @@
 ---
+title: Unser Team
+description: Die Betreuerinnen der Großtagespflege Lummerland
 tagline: Betreuung
 heading: Die Gesichter dahinter
 subtitle: Erfahrene Fachkräfte, die mit Herz arbeiten und jeden Tag neu anfangen.

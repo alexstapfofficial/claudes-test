@@ -9,7 +9,7 @@
               {{ content?.meta?.heading }}
             </h2>
             <p class="font-raleway text-base md:text-lg leading-[1.5]">
-              {{ content?.meta?.description }}
+              {{ content?.meta?.subheading }}
             </p>
           </div>
 

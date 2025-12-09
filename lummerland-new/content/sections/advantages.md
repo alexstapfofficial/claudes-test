@@ -1,4 +1,6 @@
 ---
+title: Unsere Vorteile
+description: Was macht die Großtagespflege Lummerland besonders
 image: /img/team.png
 items:
   - icon: i-heroicons-user-group

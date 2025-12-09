@@ -1,4 +1,6 @@
 ---
+title: Kontakt
+description: So erreichen Sie die Großtagespflege Lummerland
 email:
   title: Email
   description: Schreiben Sie uns eine Nachricht, wir antworten schnell.

@@ -1,4 +1,6 @@
 ---
+title: Kindliche Entwicklung fördern
+description: Motorik, Sprache, Emotionen und Kreativität im Lummerland
 tagline: Entwicklung
 heading: Die ersten Jahre prägen ein ganzes Leben
 intro: In den ersten Jahren entwickelt sich ein Kind rasant. Wir wissen, dass diese Zeit entscheidend ist für alles, was folgt. Bei Lummerland schaffen wir die Bedingungen, damit diese Entwicklung natürlich und sicher geschieht.

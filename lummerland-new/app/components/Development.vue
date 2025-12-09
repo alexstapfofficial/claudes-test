@@ -17,7 +17,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(feature, index) in content?.meta?.features" :key="index" class="overflow-hidden">
+          <div v-for="(feature, index) in content?.meta?.features" :key="index" class="overflow-hidden mt-2">
 
             <NuxtImg :src="feature.image" :alt="feature.title" format="webp"
               class="aspect-[296/160] w-full object-cover rounded-lg" loading="lazy" />

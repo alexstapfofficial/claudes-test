@@ -1,4 +1,6 @@
 ---
+title: Elternbeiträge
+description: Preise und Beiträge für die Großtagespflege Lummerland
 tagline: Preise
 heading: Elternbeiträge
 intro: Unser Angebot ist nach Wochenstunden gestaffelt, sprechen sie uns an und wir finden den passenden Tarif für Sie und Ihr Kind

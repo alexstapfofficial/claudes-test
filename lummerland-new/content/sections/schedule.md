@@ -1,4 +1,6 @@
 ---
+title: Tagesablauf
+description: Ein typischer Tag in der Großtagespflege Lummerland
 tagline: Was Ihr Kind erlebt
 heading: Ein Tag bei uns ist voller Leben
 timeline:

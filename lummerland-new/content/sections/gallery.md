@@ -1,4 +1,6 @@
 ---
+title: Unsere Räume und Einrichtung
+description: Bildergalerie der Großtagespflege Lummerland
 heading: Momente aus Lummerland
 subtitle: Einblicke in den Alltag unserer Kinder
 images:
